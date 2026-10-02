@@ -6,13 +6,7 @@
     <title>minhas reservas</title>
     <link rel="stylesheet" href="css/estilo.css">
     <style>
-         body {
-            display: flex;            /* Ativa o sistema de posicionamento Flexbox */
-            justify-content: center;  /* Centraliza na HORIZONTAL (esquerda/direita) */
-            align-items: center;      /* Centraliza na VERTICAL (cima/baixo) */
-            margin: 0;                /* Remove espaços em branco nas bordas da tela */
-            background-color: #f0f0f0; /* Um fundo cinza claro para destacar sua caixa branca */
-    }
+     
         input {
             width: 100%;             /* Faz a caixa ocupar toda a largura do formulário */
             padding: 8px;           /* Deixa a caixa mais alta e espaçosa por dentro */
@@ -56,25 +50,23 @@
             background-color: #218838; /* Fica um verde mais escuro quando o mouse passa por cima */
     }
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <div>
-        <div>
-            <h2 style"text-align: center;">
+<body>    
+
+            
                 <?php
                 require_once "conexao.php";
 
                 ?>
-            </h2>
-            <br><br>
-            <!-- <a href="login_cliente.html">
-                <button>Voltar</button>
-            </a> -->
-            <a href="logout.php">
-                <button>Sair da sua conta</button>
-            </a>
-
-        </div>    
-    </div>
+        
+             <nav style="background-color: black;" class="navbar navbar-dark">
+                <div class="container">
+                    <h2><a href="" style="color: white;" class="nav-brand fw-bolb nav-link">Waldorf Astoria Jeddah – Qasr Al Sharq</a></h2>
+                        <ul class="nav">
+                            <li class="nav-item"><a href="logout.php"class="nav-link text-white" ><button class= "btn btn-danger" >Sair</button></a></li>  
+                        </ul>
+                </div>        
+            </nav>    
 </body>
 </html>
