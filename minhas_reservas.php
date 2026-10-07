@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['logado'])|| $_SESSION['logado'] !== true){
+header("Location: login.html");
+exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -62,14 +69,14 @@
         
              <nav style="background-color: black;" class="navbar navbar-dark">
                 <div class="container">
-                    <h2><a href="" style="color: white;" class="nav-brand fw-bolb nav-link">Waldorf Astoria Jeddah – Qasr Al Sharq</a></h2>
+                    <h2><a href="" style="color: white;" class="nav-brand fw-bold nav-link">Waldorf Astoria Jeddah – Qasr Al Sharq</a></h2>
                         <ul class="nav">
                             <li class="nav-item"><a href="logout.php"class="nav-link text-white" ><button class= "btn btn-danger" >Sair</button></a></li>  
                         </ul>
                 </div>        
             </nav>   
-            <?php
-            $sql = "SELECT
+                <?php
+                $sql = "SELECT
                 reservas.id AS id_reservas,
                 hoteis.nome AS nome_hotel,
                 quartos.tipo,
@@ -77,20 +84,15 @@
                 reservas.data_entrada,
                 reservas.data_saida
                 FROM reservas
-                JOIN quartos ON reservas.id_quarto = quartos.id
-                JOIN hoteis ON quartos.id_hotel = hoteis.id";
+                JOIN quartos ON reservas.quarto_id = quartos.id
+                JOIN hoteis ON quartos.hotel_id = hoteis.id";
 
                 $resultado = mysqli_query($conexao, $sql);
                 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+                <br><br>
+
     <h2>Minhas reservas confirmadas</h2>
+    <br><br>
     <table>
         <tr>
             <th>Cód. Reservas</th>
@@ -111,7 +113,7 @@
                     <td>".$linha['preco_diaria']."</td>
                     <td>".$linha['data_entrada']."</td>
                     <td>".$linha['data_saida']."</td>
-                <tr>"
+                <tr>" ;
               }
             ?>
         </tr>

@@ -68,8 +68,10 @@
             $estrela = $_POST['estrela'];
             $email = $_POST['email'];
             $senha = $_POST['senha'];
+            
+            $senha_hash= password_hash($senha, PASSWORD_DEFAULT);
 
-            $sql = "INSERT INTO hoteis (nome, cidade, estrelas, email, senha) VALUES ('$nome_hotel','$cidade','$estrela','$email','$senha')";
+            $sql = "INSERT INTO hoteis (nome, cidade, estrelas, email, senha) VALUES ('$nome_hotel','$cidade','$estrela','$email','$senha_hash')";
             if(mysqli_query($conexao,$sql)){
             echo " Salvo com sucesso";
             }else{

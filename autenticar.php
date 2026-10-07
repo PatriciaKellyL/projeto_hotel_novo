@@ -1,10 +1,11 @@
 <?php
+session_start();
 require_once "conexao.php";
 
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
-$sql = "SELECT * FROM cliente WHERE email = '$email'";
+$sql = "SELECT * FROM clientes WHERE email = '$email'";
 
 $resultado = mysqli_query(
     $conexao,
@@ -12,8 +13,10 @@ $resultado = mysqli_query(
 );
 
 if(mysqli_num_rows($resultado) > 0){ 
-    while($linha=mysqli_fetch_assoc($resultado)){
+    while($linha = mysqli_fetch_assoc($resultado)){
         if(password_verify($senha, $linha['senha'])){
+            $_SESSION['clientes_id'] = $linha['id'];
+            $_SESSION['logado'] = true ;
             header("Location: minhas_reservas.php");
             exit();
         }
